@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 222383911}
   - component: {fileID: 222383913}
   - component: {fileID: 222383912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4692,7 +4692,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 861192838, guid: 93a787c5849ec1d4ab987f467e461b02, type: 3}
       propertyPath: runSpeed
-      value: 7.5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 861192838, guid: 93a787c5849ec1d4ab987f467e461b02, type: 3}
+      propertyPath: jumpForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176162149806065882, guid: 93a787c5849ec1d4ab987f467e461b02, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2176162149806065886, guid: 93a787c5849ec1d4ab987f467e461b02, type: 3}
       propertyPath: m_RootOrder
