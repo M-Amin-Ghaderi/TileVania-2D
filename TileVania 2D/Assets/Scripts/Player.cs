@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpForce = 5f;
+    [SerializeField] float climbingSpeed = 5f;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Run();
+        Climbing();
         Jump();
         FlipSprite();
     }
@@ -37,6 +39,22 @@ public class Player : MonoBehaviour
         bool playerHasHorizontalSpeed = Mathf.Abs(rb2d.velocity.x) > math.EPSILON;
         anim.SetBool("Running", playerHasHorizontalSpeed);
 
+    }
+
+    public void Climbing()
+    {
+        if (!mycollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            anim.SetBool("Climbing", false);
+            rb2d.gravityScale = 1f;
+            return;
+        }
+        float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        rb2d.gravityScale = 0;
+        Vector2 climbingVelocity = new Vector2(rb2d.velocity.x, controlThrow * climbingSpeed);
+        rb2d.velocity = climbingVelocity;
+        bool playerHasHorizontalSpeed = Mathf.Abs(rb2d.velocity.y) > math.EPSILON;
+        anim.SetBool("Climbing", playerHasHorizontalSpeed);
     }
 
     public void Jump()
