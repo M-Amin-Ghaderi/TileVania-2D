@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private Animator anim;
-    private Collider2D mycollider2D;
+    private CapsuleCollider2D myCapsuleCollider2D;
+    private BoxCollider2D myFeetCollider;
 
 
     // Start is called before the first frame update
@@ -20,7 +21,8 @@ public class Player : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        mycollider2D = GetComponent<Collider2D>();
+        myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        myFeetCollider = GetComponent <BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
 
     public void Climbing()
     {
-        if (!mycollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             anim.SetBool("Climbing", false);
             rb2d.gravityScale = 1f;
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if (!mycollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
             Vector2 jumpingVeclocity = new Vector2(0f, jumpForce);
