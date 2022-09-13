@@ -17,22 +17,26 @@ public class ScenePresist : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+        startingSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        startingSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
-        if (startingSceneIndex != currentScene)
+        if (currentScene != startingSceneIndex)
         {
+            SceneManager.LoadScene(currentScene);
             Destroy(gameObject);
+            
         }
+        
     }
 }
