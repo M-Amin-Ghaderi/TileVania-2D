@@ -96,7 +96,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -913832849
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -892785611, guid: a20545e86d002ef4c88e5683e0cdce6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -139,12 +139,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 2176162149806065887}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0dc67bac7384fd845b77463794b789f5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04, y: -0.1}
-  m_Size: {x: 0.45, y: 0.8}
+  m_Offset: {x: -0.03999999, y: -0.10019353}
+  m_Size: {x: 0.45, y: 0.8003871}
   m_Direction: 0
 --- !u!61 &320440540
 BoxCollider2D:
@@ -159,7 +159,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02959472, y: -0.42734966}
+  m_Offset: {x: -0.02959472, y: -0.42676902}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -170,7 +170,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3489133, y: 0.14530069}
+  m_Size: {x: 0.3489133, y: 0.14413938}
   m_EdgeRadius: 0
 --- !u!114 &861192838
 MonoBehaviour:
@@ -187,3 +187,5 @@ MonoBehaviour:
   runSpeed: 6
   jumpForce: 12
   climbingSpeed: 5
+  deathKick: {x: 25, y: 25}
+  deathSound: {fileID: 8300000, guid: d9bfe10210eb4f9448c64f23229e2eea, type: 3}
