@@ -9,11 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float climbingSpeed = 5f;
+    [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
     private Rigidbody2D rb2d;
     private Animator anim;
     private CapsuleCollider2D myCapsuleCollider2D;
     private BoxCollider2D myFeetCollider;
+    private bool isAlive = true;
 
 
     // Start is called before the first frame update
@@ -22,12 +24,14 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
-        myFeetCollider = GetComponent <BoxCollider2D>();
+        myFeetCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isAlive) { return; }
+        Die();
         Run();
         Climbing();
         Jump();
@@ -66,6 +70,16 @@ public class Player : MonoBehaviour
         {
             Vector2 jumpingVeclocity = new Vector2(0f, jumpForce);
             rb2d.velocity += jumpingVeclocity;
+        }
+    }
+
+    private void Die()
+    {
+        if (myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        {
+            isAlive = false;
+            anim.SetTrigger("Die");
+            rb2d.velocity = deathKick;
         }
     }
 
